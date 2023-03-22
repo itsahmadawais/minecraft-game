@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.scss";
+import { MainContainer } from "./layouts";
+import { PlayerForm, Players } from "./components";
+import { useState } from "react";
 function App() {
+  const [players, setPlayers] = useState([
+    {
+      id: "2979a23e4ca24fe2b4a76325ee950f53",
+      name: "Awais",
+    },
+  ]);
+
+  const onAddNewPlayer = (player) => {
+    setPlayers([...players, player]);
+    console.log(players);
+  };
+
+  const onSetAdmin = (id) => {
+    let filterPlayers = players.map((player) => {
+      if (player.id === id) {
+        return {
+          ...player,
+          isAdmin: true,
+        };
+      }
+      return player;
+    });
+    setPlayers(filterPlayers);
+  };
+
+  const onDelete = (id) => {
+    let filterPlayers = players.filter((player) => player.id !== id);
+    setPlayers(filterPlayers);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MainContainer>
+      <PlayerForm onAddNewPlayer={onAddNewPlayer} />
+      <Players players={players} onSetAdmin={onSetAdmin} onDelete={onDelete} />
+    </MainContainer>
   );
 }
 
