@@ -1,0 +1,11 @@
+Use codesandbox.io and create a typescript react environment, invite stan@auraside.com
+As a Minecraft player, I want to have a user interface to manage who is whitelisted on my Minecraft server.
+
+There should be a text input with a button so I can add players. It should validate that this is a real Minecraft player by checking with mojang api or a third party Minecraft api. If it’s not a real player it should display an error.
+
+The list of Minecraft players should be displayed in a grid formation with the players name and their face image or body render.
+
+There should be an icon on each player for deleting them, and an icon for setting them to admin (allow them to go into godmode on the server). There should be some sort of indication whether a player is admin.
+
+The overall presentation of the page should be clean and nice looking with a nice color scheme and consistent elements. The components should be properly structured/seperated.
+If you complete all this and have time remaining then implement pagination.
