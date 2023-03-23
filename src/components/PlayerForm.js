@@ -11,8 +11,13 @@ export default function PlayerForm({ onAddNewPlayer }) {
     try {
       let response = await getUser(playerName);
       console.log("Player Data:", response.data);
-      onAddNewPlayer(response);
-      toast.success("Player added!");
+      let reply = onAddNewPlayer(response.data);
+      if (reply) {
+        toast.success("Player added!");
+        setPlayerName("");
+      } else {
+        toast.error("Player already added!");
+      }
     } catch (error) {
       console.log(error);
       toast.error("Player not found!");

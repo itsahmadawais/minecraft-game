@@ -11,8 +11,19 @@ function App() {
   ]);
 
   const onAddNewPlayer = (player) => {
-    setPlayers([...players, player]);
+    let playerFound = players.find((item) => {
+      if (item.id === player.id) {
+        return true;
+      }
+      return false;
+    });
+    if (playerFound) {
+      return false;
+    } else {
+      setPlayers([...players, player]);
+    }
     console.log(players);
+    return true;
   };
 
   const onSetAdmin = (id) => {
